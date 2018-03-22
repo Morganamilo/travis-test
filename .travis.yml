@@ -11,7 +11,7 @@ arch:
         - make test
         - "./tests/init/aur.sh"
         - "ls -lh"
+        - "exit 1"
 
 script:
 - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
-- "pacman -S git"
