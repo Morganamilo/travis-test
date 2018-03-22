@@ -7,7 +7,7 @@ arch:
         packages:
         - go
         script:
-        make test
+        - make test
         - "./init/aur.sh"
         - "ls -lh"
 
