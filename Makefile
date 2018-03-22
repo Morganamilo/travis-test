@@ -2,13 +2,14 @@
 MAJORVERSION := 5
 MINORVERSION := $(shell git rev-list --count master)
 VERSION := ${MAJORVERSION}.${MINORVERSION}
-LDFLAGSi = -ldflags '-s -w -X main.version=${VERSION}'
+LDFLAGS := -ldflags '-s -w -X main.version=${VERSION}'
 GOFILES := $(shell ls *.go | grep -v /vendor/)
-ARCH = $(shell uname -m)
-PKGNAME = yay
-PACKAGE = ${PKGNAME}_${VERSION}_${ARCH}
+ARCH := $(shell uname -m)
+PKGNAME := yay
+PACKAGE := ${PKGNAME}_${VERSION}_${ARCH}
 
 export GOPATH=$(shell pwd)/.go
+export GOROOT=/usr/lib/go
 
 default: build
 
