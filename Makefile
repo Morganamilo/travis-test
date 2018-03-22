@@ -16,7 +16,7 @@ install:
 test:
 	go test ./...
 build:
-	go build -v ${LDFLAGS}
+	go build -v ${LDFLAGS} -o yay
 release:
 	mkdir ${PACKAGE}
 	cp ./yay ${PACKAGE}/
