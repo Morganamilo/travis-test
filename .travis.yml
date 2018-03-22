@@ -8,7 +8,7 @@ arch:
         - go
         script:
         - make test
-        - "./init/aur.sh"
+        - "./tests/init/aur.sh"
         - "ls -lh"
 
 script:
