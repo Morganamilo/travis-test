@@ -8,7 +8,8 @@ arch:
   # pacman packages
   - go
   script:
-  - "./build_script.sh"
+  - "./init/aur.sh"
+  - "ls -lh"
 
 script:
 - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
