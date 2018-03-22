@@ -184,6 +184,8 @@ func handleConfig(option, value string) bool {
 	switch option {
 	case "save":
 		shouldSaveConfig = true
+	case "aururl":
+		config.AURURL = value
 	case "afterclean":
 		config.CleanAfter = true
 	case "noafterclean":

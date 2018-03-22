@@ -129,7 +129,7 @@ func getPkgbuildsfromAUR(pkgs []string, dir string) (err error) {
 	}
 
 	for _, pkg := range aq {
-		downloadAndUnpack(baseURL+aq[0].URLPath, dir, false)
+		downloadAndUnpack(config.AURURL+aq[0].URLPath, dir, false)
 		fmt.Println(bold(green(arrow)), bold(green("Downloaded")), bold(magenta(pkg.Name)), bold(green("from AUR")))
 	}
 

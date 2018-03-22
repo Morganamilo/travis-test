@@ -425,6 +425,8 @@ func hasParam(arg string) bool {
 		return true
 
 	//yay params
+	case "aururl":
+		return true
 	case "mflags":
 		return true
 	case "gpgflags":

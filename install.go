@@ -542,7 +542,7 @@ func downloadPkgBuilds(pkgs []*rpc.Pkg, targets stringSet, bases map[string][]*r
 
 		fmt.Printf(str, k+1, len(pkgs), formatPkgbase(pkg, bases))
 
-		err := downloadAndUnpack(baseURL+pkg.URLPath, config.BuildDir, false)
+		err := downloadAndUnpack(config.AURURL+pkg.URLPath, config.BuildDir, false)
 		if err != nil {
 			return err
 		}
