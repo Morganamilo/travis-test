@@ -8,6 +8,8 @@ ARCH = $(shell uname -m)
 PKGNAME = yay
 PACKAGE = ${PKGNAME}_${VERSION}_${ARCH}
 
+export GOPATH=$(shell pwd)/.go
+
 default: build
 
 all: clean build release package
@@ -16,7 +18,7 @@ install:
 	go install -v ${LDFLAGS} ${GO_FILES}
 test:
 	gofmt -l *.go
-	@test -z "$$(gofmt -l *.go)" || (echo "Files need to be linted" && false)
+	test -z "$$(gofmt -l *.go)" || (echo "Files need to be linted" && false)
 
 	go vet -v
 	go test -v
