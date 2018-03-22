@@ -14,5 +14,4 @@ arch:
         - make test
         - "./tests/init/aur.sh"
         - "ls -lh"
-        - "exit 1"
 
