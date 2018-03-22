@@ -18,7 +18,7 @@ func install(parser *arguments) error {
 	requestTargets := parser.targets.toSlice()
 	var err error
 	var incompatable stringSet
-	var dc *depCatagories
+var dc *depCatagories
 	var toClean []*rpc.Pkg
 	var toEdit []*rpc.Pkg
 
