@@ -11,6 +11,7 @@ arch:
         packages:
         - go
         script:
+        - "set -e"
         - "make test"
         - "./tests/init/aur.sh"
 
