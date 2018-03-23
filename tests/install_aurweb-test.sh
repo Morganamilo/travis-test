@@ -2,5 +2,5 @@
 set -e
 
 cd tests/aurweb-test
-makepkg -siCc --noconfirm
+makepkg -fsiCc --noconfirm
 

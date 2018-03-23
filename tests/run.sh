@@ -11,4 +11,4 @@ sleep 1
 
 ./tests/test_connection.sh
 
-
+pkill php
