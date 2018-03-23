@@ -11,9 +11,5 @@ arch:
         packages:
         - go
         script:
-        - "set -e"
-        - "make test"
-        - "./tests/install_aurweb-test.sh"
-        - "aurweb-test&"
-        - "./tests/test_connection.sh"
+        - ./tests/run.sh
 
