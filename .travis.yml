@@ -13,5 +13,7 @@ arch:
         script:
         - "set -e"
         - "make test"
-        - "./tests/init/aur.sh"
+        - "./tests/install_aurweb-test.sh"
+        - "systemctl start aurweb-test"
+        - "./tests/test_connection.sh"
 

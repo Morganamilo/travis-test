@@ -1,0 +1,2 @@
+#!/bin/sh
+AUR_CONFIG='/srv/aurweb-test/conf/config' php --php-ini /srv/aurweb-test/php.ini -S 127.0.0.1:8080 -t /srv/aurweb-test/web/html

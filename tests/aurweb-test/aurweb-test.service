@@ -1,0 +1,9 @@
+[Unit]
+Description=Arch User Repository (AUR) Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/aurweb-test
+
+[Install]
+WantedBy=multi-user.target

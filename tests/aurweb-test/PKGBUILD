@@ -1,0 +1,59 @@
+#Maintainer Morganamilo <morganamilo@gmail.com>
+_randomdata=n
+_pkgname=aurweb
+pkgname=aurweb-test
+pkgver=4.6.0
+pkgrel=1
+pkgdesc="Arch User Repository (AUR) Databse for predictable testing"
+arch=(x86_64)
+url="http://aur.archlinux.org"
+license=('GPL')
+depends=(php php-sqlite sqlite)
+makedepends=(words fortune-mod)
+source=("$pkgname-$pkgver::https://github.com/lfos/aurweb/archive/v$pkgver.tar.gz"
+	"config"
+	"aurweb-test"
+	"php.ini"
+	"aurweb.sqlite3"
+	"aurweb-test.service")
+md5sums=('d1551ca1118506bf80d70dd2ab7939c0'
+         'cf2ddbb24d78073490f7861850432fed'
+         'bfbc35d1b96d37cb42aa8417cd0647ae'
+         'aa97d8f335a00858485e342768942c83'
+         '495e756c43084d3445b3f8cebca1b01c'
+         '9dc21501433090b455197790d1293f01')
+
+build() {
+	cd "$srcdir/$_pkgname-$pkgver/schema"
+
+	if [ $_randomdata == "y" ]; then
+		make
+		./gendummydata.py out.sql
+		sqlite3 ../aurweb.sqlite3 < aur-schema-sqlite.sql
+		sqlite3 ../aurweb.sqlite3 < out.sql
+	else
+		cp "$srcdir/aurweb.sqlite3" "../aurweb.sqlite3"
+	fi
+}
+
+package() {
+	cd "$srcdir/$_pkgname-$pkgver"
+
+	install -dm755 "$pkgdir/srv/$pkgname"
+
+	for dir in aurweb/ conf/ doc/ po/ schema/ test/ upgrading/ web/; do
+		cp -a "$srcdir/$_pkgname-$pkgver/$dir" "$pkgdir/srv/$pkgname"
+		chmod 755 "$pkgdir/srv/$pkgname/$dir"
+	done
+
+	install -Dm644 "$srcdir/$_pkgname-$pkgver/aurweb.sqlite3" "$pkgdir/srv/$pkgname/aurweb.sqlite3"
+	install -Dm644 "$srcdir/config" "$pkgdir/srv/$pkgname/conf/config"
+	install -Dm755 "$srcdir/aurweb-test" "$pkgdir/srv/$pkgname/aurweb-test"
+	install -Dm755 "$srcdir/php.ini" "$pkgdir/srv/$pkgname/php.ini"
+
+	install -d "$pkgdir/usr/lib/systemd/system/"
+	install -m644 "$srcdir/aurweb-test.service" "$pkgdir/usr/lib/systemd/system/"
+
+	install -dm755 "$pkgdir/usr/bin"
+	ln -s "$pkgdir/srv/$pkgname/aurweb-test" "$pkgdir/usr/bin/"
+}
