@@ -1,5 +1,4 @@
 #!/usr/bin/sh
-set -e
 
 STATUS="`curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8080/rpc/?v=5&type=info&arg[]=zebedee"`"
 
