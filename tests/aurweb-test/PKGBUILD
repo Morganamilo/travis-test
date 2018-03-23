@@ -55,5 +55,5 @@ package() {
 	install -m644 "$srcdir/aurweb-test.service" "$pkgdir/usr/lib/systemd/system/"
 
 	install -dm755 "$pkgdir/usr/bin"
-	ln -s "$pkgdir/srv/$pkgname/aurweb-test" "$pkgdir/usr/bin/"
+	ln -s "/srv/$pkgname/aurweb-test" "$pkgdir/usr/bin/"
 }
